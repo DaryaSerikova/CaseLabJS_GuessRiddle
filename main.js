@@ -5,7 +5,7 @@ var riddle = {
     tries: 3,
     checkAnswer(guessAnswer) {
         if (this.tries > 0) {
-            const message =  (guessAnswer.toLowerCase() === this.correctAnswer) ? "Правильный ответ" : "Неправильный ответ";
+            const message = (guessAnswer.toLowerCase() === this.correctAnswer) ? "Правильный ответ" : "Неправильный ответ";
             message === "Правильный ответ" ? this.tries = 0 : this.tries;
 
             alert(`${message}`);
@@ -20,19 +20,16 @@ var riddle = {
             }
             this.tries--;
             if (this.tries <= 0) {
-                alert("Игра окончена");
-                return console.log("Игра окончена");
+                alert("Игра окончена! Обновите страницу, чтобы начать заново.");
+                console.log("Игра окончена");
             } else {
                 alert(`Количество оставшихся попыток: ${this.tries}`);
             }
         
         } else {
-            alert("Игра окончена");
+            alert("Игра окончена! Обновите страницу, чтобы начать заново.");
             console.log("Игра окончена");
         }
-
-
-        
     },
 }
 
