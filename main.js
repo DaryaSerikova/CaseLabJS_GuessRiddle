@@ -6,21 +6,26 @@ var riddle = {
     checkAnswer(guessAnswer) {
         if (this.tries > 0) {
             const message =  (guessAnswer.toLowerCase() === this.correctAnswer) ? "Правильный ответ" : "Неправильный ответ";
-            alert(message);
-            console.log(message); //the repeating in console.log for autotest
+            message === "Правильный ответ" ? this.tries = 0 : this.tries;
 
-            console.log(`Текущая попытка: ${this.tries}`);
+            alert(`${message}`);
+            console.log(message); //the repeating in console.log for autotest
             
-            if (this.tries <= 3 && message === "Неправильный ответ") {//2-3+1 //2-2+1
-                let indexHint = this.hints.length - this.tries + 1 // 2-2 //2-1
-                // console.log(`indexHint ${indexHint}`);
+            if (this.tries <= 3 && message === "Неправильный ответ") {
+                let indexHint = this.hints.length - this.tries + 1 //2-3+1 //2-2+1
 
                 if (indexHint < 2) {
                     alert(`Подсказка: ${this.hints[indexHint]}`);
-                    // console.log(`Hint: ${this.hints[indexHint]}`);
                 }
             }
             this.tries--;
+            if (this.tries <= 0) {
+                alert("Игра окончена");
+                return console.log("Игра окончена");
+            } else {
+                alert(`Количество оставшихся попыток: ${this.tries}`);
+            }
+        
         } else {
             alert("Игра окончена");
             console.log("Игра окончена");
@@ -41,9 +46,8 @@ function check() {
     var guessedAnswer = input.value;
 
     if (guessedAnswer) {
-        
+
         riddle.checkAnswer(guessedAnswer);
-        // console.log(riddle.tries);
 
     }
 }
