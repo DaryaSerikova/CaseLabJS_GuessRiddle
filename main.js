@@ -4,10 +4,20 @@ var riddle = {
     hints: ['это съедобное', 'это фрукт'],
     tries: 3,
     checkAnswer(guessAnswer) {
-        guessAnswer.toLowerCase() === this.correctAnswer ? alert("Правильный ответ") : alert("Неправильный ответ");
-        guessAnswer.toLowerCase() === this.correctAnswer ? console.log("Правильный ответ") : console.log("Неправильный ответ");
-        // TODO: написать логику проверки правильного ответа
-        // alert для пользователя, console.log()
+        if (this.tries > 0) {
+            const message =  (guessAnswer.toLowerCase() === this.correctAnswer) ? "Правильный ответ" : "Неправильный ответ";
+            alert(message);
+            console.log(message); //the repeating in console.log for autotest
+            // if (this.tries === 1) {
+
+            // }
+            this.tries--;
+        } else {
+            alert("Игра окончена");
+            console.log("Игра окончена");
+        }
+
+
         
     },
 }
@@ -22,8 +32,9 @@ function check() {
     var guessedAnswer = input.value;
 
     if (guessedAnswer) {
-        // TODO: вызвать функцию checkAnswer у объекта загадки, передав туда ответ
+        
         riddle.checkAnswer(guessedAnswer);
+        console.log(riddle.tries);
 
     }
 }
